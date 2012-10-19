@@ -1,0 +1,52 @@
+<div id="filters_action" class="gridIconOverlay"></div>
+
+<div id="gallery_page" class="content_wrapper">
+	<div class="filters_wrapper filters_up">
+		<div id="cancel" class="filter"></div>
+		<div id="time" class="filter"></div>
+		<div id="type" class="filter dog"></div>
+		<div id="favs" class="filter"></div>
+		<div id="location" class="filter"></div>
+		<div class="clear"></div>		
+		
+		<div id="dog_type" class="type_filter"></div>
+		<div id="cat_type" class="type_filter"></div>
+		<div id="bird_type" class="type_filter"></div>
+		<div id="rabbit_type" class="type_filter"></div>
+		<div id="other_type" class="type_filter"></div>
+		<div class="clear"></div>	
+		
+		<input id="filterAction_zip" type="submit" value=" " class="filterZip_go box_button"/>
+		<input id="filter_zip" type="text" placeholder="Zip Code" />
+		<div class="clear"></div>			
+	</div>
+
+	<div id="wrapper" class="scroll_wrapper">
+		<div id="scroller">
+			
+
+			<ul id="thelist">
+					 {{#each pets}}
+					 <li data-id="{{sid}}" class="pet_thumb" style="background-color:#333;background-image:url('{{thumb_retina}}')"></li>
+
+  					 {{/each}}
+
+			</ul>
+			<div id="loadMore">
+				<div class="wide_button green_button active_yellow centered">Load More...</div>
+			</div>
+			<!-- <div id="pullUp">
+				<span class="pullUpIcon"></span><span class="pullUpLabel">Pull up to refresh...</span>
+			</div> -->
+		</div>
+	</div>
+</div>
+
+
+
+<div class="spinnerModal" style="display:none">
+  <div class="spinnerContainer">
+		<div class="description">Loading Pets</div>
+
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<resources>
+
+    <string name="app_name">Pics for Pets</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">Pics for Pets</string>
+
+</resources>

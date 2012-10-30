@@ -54,7 +54,7 @@ Application = {
 		
   var galleryTab = function() {
            if(window.tapReady){
-           // window.tapReady = false;
+				$('.photo_dialog').hide();
 			$('.tab_android').removeClass('tab_android_active');
 			$('#gallery_tab_android').addClass('tab_android_active');
       
@@ -63,25 +63,23 @@ Application = {
       //activateTabs();
     }
 
-    // var cameraTab = function() {
-    //         if(window.tapReady){
-    //          // window.tapReady = false;
-    //   
-    //   Application.furView.takePic();
-    //   $('.tab').removeClass('tab_active');
-    //   $('#camera_tab').addClass('tab_active');
-    // 
-    // }
-      //activateTabs();   
-    //}
+    var cameraTab = function() {
+			if(window.tapReady){
+				$('#take_photo').live('tap',Application.furView.takePhoto);
+				$('#choose_existing').live('tap',Application.furView.chooseExisting);
+				$('#photo_cancel').live('tap',Application.furView.cancel);
+      	Application.furView.showPhotoSheet();
+      	$('.tab_android').removeClass('tab_android_active');
+      	$('#camera_tab_android').addClass('tab_android_active');
+    	}
+    }
     var furTab = function() {
       if(window.tapReady){
-              //window.tapReady = false;
-			$('.tab_android').removeClass('tab_android_active');
-			$('#furtograph_tab_android').addClass('tab_android_active');
-      Application.router.navigate("#fur" , {trigger: true});
-
-    }
+				$('.photo_dialog').hide();
+				$('.tab_android').removeClass('tab_android_active');
+				$('#furtograph_tab_android').addClass('tab_android_active');
+	      Application.router.navigate("#fur" , {trigger: true});
+	    }
       
       //activateTabs();
 
@@ -89,7 +87,7 @@ Application = {
     var aboutTab =  function() {
             //haltTabs();
       if(window.tapReady){
-        //window.tapReady = false;
+				$('.photo_dialog').hide();
 			$('.tab_android').removeClass('tab_android_active');
 			$('#about_tab_android').addClass('tab_android_active');
       Application.router.navigate("#about" , {trigger: true});
@@ -100,6 +98,7 @@ Application = {
       //haltTabs();
       //cordova.exec("ChildBrowserCommand.showWebPage", "http://pics4pets.herokuapp.com/faq.html" );
       //activateTabs();
+				$('.photo_dialog').hide();
       Application.router.navigate("#myanimals" , {trigger: true});
 			$('.tab_android').removeClass('tab_android_active');
 			$('#myanimals_tab_android').addClass('tab_android_active');
@@ -109,7 +108,7 @@ Application = {
 
 $('#gallery_tab_android').bind('tap', galleryTab);
 $('#myanimals_tab_android').bind('tap', myAnimalsTab); 
-//$('#camera_tab').bind('tap', cameraTab); 
+$('#camera_tab_android').bind('tap', cameraTab); 
 $('#furtograph_tab_android').bind('tap', furTab);
 $('#about_tab_android').bind('tap', aboutTab);
 

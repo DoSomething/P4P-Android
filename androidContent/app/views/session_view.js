@@ -1,5 +1,6 @@
 var View = require('./view');
 var template = require('./templates/loginSplash');
+var a;
 
 module.exports = View.extend({
   id: 'session-view',
@@ -12,13 +13,7 @@ module.exports = View.extend({
 
    
   initialize: function() {  
-	
-	 
-	
-	
-	
-	
-	
+
 	
   },
 
@@ -44,7 +39,7 @@ module.exports = View.extend({
   		function(result) {
   			
   			Application.sessionView.successFb(result);
-  			//console.log("FacebookConnect.login:" + JSON.stringify(result));
+  			console.log("FacebookConnect.login:" + JSON.stringify(result));
   			if(result.cancelled || result.error) {
   				console.log("FacebookConnect.login:failedWithError:" + result.message);
   				return;}});
@@ -55,11 +50,12 @@ module.exports = View.extend({
 },
 successFb: function(result){
 
-	//alert("success");
+	window.a = result;
+	window.localStorage.setItem("fb_id", result.id);
 	// store login state
 	window.localStorage.setItem("user_fb_auth", true);
-  window.localStorage.setItem("fb_auth_token", result.accessToken )
-  //console.log(result);
+  	window.localStorage.setItem("fb_auth_token", result.accessToken );
+
   //this.authDos(fbtoken);
 
    data = {access_token: result.accessToken,group_name:"PicsforPetsSharers2012"};
@@ -80,12 +76,13 @@ successFb: function(result){
             //$('#result').html(JSON.stringify(data));
             //alert('dos success');
             //Application.sessionView.sucessDoS();
-            
-              window.localStorage.setItem("user_dos_auth", true);
+            console.log(JSON.stringify(data));
+			window.localStorage.setItem("uid", data.user.uid);
               try{
                 var len = data["session_name"].length;
                 window.localStorage.setItem("user_dos_sessname", data["session_name"].substring(1,len) + '='+ data["sessid"]);
-                //alert(data["session_name"]);
+             	window.localStorage.setItem("user_dos_auth", true);
+			    
 
 
               } catch (e) {

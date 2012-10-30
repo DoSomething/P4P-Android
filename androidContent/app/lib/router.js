@@ -29,9 +29,10 @@ module.exports = Backbone.Router.extend({
         });
         this.firstPage = true;
 
-				$('body').append('<div id="header"><div class="logo_android"></div><div id="about_tab_android" class="tab_android"></div><div id="myanimals_tab_android" class="tab_android"></div><div id="furtograph_tab_android" class="tab_android"></div><div id="gallery_tab_android" class="tab_android"></div></div>');
+				$('body').append('<div id="header"><div class="logo_android"></div><div id="about_tab_android" class="tab_android"></div><div id="myanimals_tab_android" class="tab_android"></div><div id="furtograph_tab_android" class="tab_android"></div><div id="camera_tab_android" class="tab_android"></div><div id="gallery_tab_android" class="tab_android"></div></div>');
     	  $('.tab_android').removeClass('tab_android_active');
       $('#gallery_tab_android').addClass('tab_android_active');
+				$('body').append('<div class="photo_dialog" style="display:none"><div id="take_photo" class="dialog_option">Take Photo</div><div id="choose_existing" class="dialog_option">Choose From Album</div><div id="photo_cancel" class="dialog_option">Cancel</div></div>');
 
 		if ( window.localStorage.getItem("launchCount") == "1"){
 

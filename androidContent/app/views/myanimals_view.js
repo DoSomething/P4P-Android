@@ -1,6 +1,6 @@
 var View = require('./view');
 var template = require('./templates/myanimals');
-var Pets = require('../models/pets');
+var MyPets = require('../models/myanimals');
 var _PETSPERPAGE = 12;
 
 module.exports = View.extend({
@@ -11,14 +11,22 @@ module.exports = View.extend({
 		"tap .mypetitem": "renderPet"
 	},
 
-
 	initialize: function() {  
-		this.myList = new Pets();
-		this.myList.petJSON ={};
-    //this.myList.url = "http://requestb.in/zinta8zi";
-		this.myList.fetch({
+		
+	},
 
-			data: { display_id: "service_shared_pets"},
+	render: function() {
+
+		this.myList = new MyPets();
+		this.myList.petJSON ={};
+
+    //this.myList.url = "http://requestb.in/zinta8zi";
+		var fbId = window.localStorage.getItem("fb_id");
+		var uid = window.localStorage.getItem("uid");
+		
+		
+		this.myList.fetch({
+			data: { "fbid":fbId, "uid":uid},
 			processData:true,
 			add:true,
 			success:function(){
@@ -28,15 +36,6 @@ module.exports = View.extend({
 			}
 		});
 
-
-
-
-
-
-	},
-
-	render: function() {
-
   	//disable taps on tab again
   	//$('#gallery_tab').unbind();
 
@@ -44,26 +43,21 @@ module.exports = View.extend({
   	// testing jq 
   	this.$el.html(this.template(this.myList.petJSON));
 
-  	//this.$el.html(this.template(t));
-
-
-  	
-  	
+  	//this.$el.html(this.template(t));  	
+ 
   	return this;
-
   },
 
   afterRender: function() {
   	this.enableScroll();
-  	     // Application.router.navigate("#gallery",{trigger:true});
-
   },  
-  enableScroll: function(){
-         myScroll = new iScroll('myPetScroll', {useTransition: true});
 
+  enableScroll: function(){
+		myScroll = new iScroll('myPetScroll', {useTransition: true});
   },
+
   append: function(){
-  	//alert("refresh fired")
+  	alert("refresh fired")
   	this.myList.petJSON = this.myList.handle();
   	//this.petList.each(function(pet){console.log(pet.get("name"))});
   	//console.log(js);
@@ -72,12 +66,11 @@ module.exports = View.extend({
 
   	this.$el.html(this.template(this.myList.petJSON));
 
-  	//this.enableScroll();
+  	this.enableScroll();
 
-
-  	  	//this.petList.each(function(pet){console.log(pet.get("name"))});
-
+		//this.petList.each(function(pet){console.log(pet.get("name"))});
   },
+
   renderPet: function(e){
   	//alert("test");
   	e.preventDefault();
@@ -90,14 +83,6 @@ module.exports = View.extend({
     Application.router.navigate("#pet" , {trigger: true});
 
    	//petDetail.render();
-    //alert(name);
-
-
-
   }
 
-
-
-
-
-    });
+});

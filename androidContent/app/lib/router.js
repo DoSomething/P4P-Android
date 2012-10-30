@@ -18,7 +18,6 @@ module.exports = Backbone.Router.extend({
 		'shelter':'shelter',
 		'shelters':'shelterList'
 
-
 	},
 	initialize:function () {
         // Handle back button throughout the application

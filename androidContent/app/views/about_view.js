@@ -4,17 +4,9 @@ var template = require('./templates/about');
 module.exports = View.extend({
   id: 'about-view',
   template: template,
-  events: 		{"tap #faq_about":"faqChildBrowser"},
+  events: 		{"tap #faq_about":"openFAQ"},
 
-   
   initialize: function() {  
-	
-	 
-	
-	
-	
-	
-	
 	
   },
 
@@ -27,10 +19,8 @@ module.exports = View.extend({
   	return this;
 
   },
-  faqChildBrowser:function(){
-		//alert('babyb');
-		
-
+  openFAQ:function(){
+		Application.router.navigate("#faq", {trigger: true});
 	},
   enableScroll:function(){
   		var scroll = new iScroll('aboutScroll');
@@ -41,8 +31,5 @@ module.exports = View.extend({
 	//this.enableScroll();
 	
 	}
-
-
-
 
 });

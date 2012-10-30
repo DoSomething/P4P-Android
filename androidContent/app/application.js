@@ -100,7 +100,7 @@ Application = {
       //haltTabs();
       //cordova.exec("ChildBrowserCommand.showWebPage", "http://pics4pets.herokuapp.com/faq.html" );
       //activateTabs();
-      Application.router.navigate("#faq" , {trigger: true});
+      Application.router.navigate("#myanimals" , {trigger: true});
 			$('.tab_android').removeClass('tab_android_active');
 			$('#myanimals_tab_android').addClass('tab_android_active');
 
